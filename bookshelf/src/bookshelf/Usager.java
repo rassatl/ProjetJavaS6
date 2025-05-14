@@ -11,6 +11,10 @@ public class Usager {
 	
 	private ArrayList<Pret> listLivrePrete;
 	
+	public Usager(int id) {
+		this.id = id;
+	}
+	
 	public Usager(int id, String nom, String prenom, int anneeNaissance, Boolean tarifReduit) {
 		this.id = id;
 		this.nom = nom;

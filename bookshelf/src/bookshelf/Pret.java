@@ -1,18 +1,17 @@
 package bookshelf;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Pret {
 	private int id;
-	private Date dateEmprunt;
+	private LocalDate dateEmprunt;
 	private int dureeEmprunt;
-	private Date dateRetourEffective; 
+	private LocalDate dateRetourEffective; 
 	
 	private Usager emprunteur;
 	private Livre livreEmprunte;
 	
-		
-	public Pret(int id, Date dateEmprunt, int dureeEmprunt, Date dateRetourEffective, Usager personne, Livre livre) {
+	public Pret(int id, LocalDate dateEmprunt, int dureeEmprunt, LocalDate dateRetourEffective, Usager personne, Livre livre) {
 		this.id = id;
 		this.dateEmprunt = dateEmprunt;
 		this.dureeEmprunt = dureeEmprunt;
@@ -29,11 +28,11 @@ public class Pret {
 	    this.id = id;
 	}
 
-	public Date getDateEmprunt() {
+	public LocalDate getDateEmprunt() {
 	    return dateEmprunt;
 	}
 
-	public void setDateEmprunt(Date dateEmprunt) {
+	public void setDateEmprunt(LocalDate dateEmprunt) {
 	    this.dateEmprunt = dateEmprunt;
 	}
 
@@ -45,11 +44,11 @@ public class Pret {
 	    this.dureeEmprunt = dureeEmprunt;
 	}
 
-	public Date getDateRetourEffective() {
+	public LocalDate getDateRetourEffective() {
 	    return dateRetourEffective;
 	}
 
-	public void setDateRetourEffective(Date dateRetourEffective) {
+	public void setDateRetourEffective(LocalDate dateRetourEffective) {
 	    this.dateRetourEffective = dateRetourEffective;
 	}
 	

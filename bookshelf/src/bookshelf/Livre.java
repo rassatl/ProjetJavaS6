@@ -7,8 +7,10 @@ public class Livre {
 	private int nbPages; 
 	private String genre;
 	private int nbExemplaires;
-	
-	
+
+	public Livre(int isbn) {
+		this.isbn = isbn;
+	}
 	
 	public Livre(int isbn, String titre, String auteur, int nbPages, String genre, int nbExemplaires) {
 		this.isbn = isbn;
