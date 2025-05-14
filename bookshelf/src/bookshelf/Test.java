@@ -1,6 +1,8 @@
 package bookshelf;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Test {
@@ -9,13 +11,18 @@ public class Test {
         List<Usager> usagers;
         List<Livre> livres;
         List<Pret> prets;
+        String textLog;
 
     	usagers = new ArrayList<Usager>();
     	livres = new ArrayList<Livre>();
     	prets = new ArrayList<Pret>();
     	
         boolean continuer = true;
-
+        
+        LocalDate currdate = LocalDate.now();
+    	String currTime = LocalTime.now().format(DateTimeFormatter.ofPattern("HH-mm-ss"));
+    	String fileName = "Logs/Bookshelf_"+currdate+"_"+currTime+".log";
+    	
         while (continuer) {
         	int id;
             System.out.println("\n=== Menu ===");
@@ -55,6 +62,8 @@ public class Test {
                     	tarifReduitBool = true;       
                     
                     usagers.add(new Usager(id, nom, prenom, anneeNaissance, tarifReduitBool));
+                    textLog = getCurrentDateAndTime() + " - UTILISATEUR AJOUTÉ: " + id + ", " + nom + ", " +  prenom + ", " +  anneeNaissance + ", " +  tarifReduitBool;
+                    FileManager.writLog(fileName, textLog);
                     break;
 
                 case 2:
@@ -77,7 +86,6 @@ public class Test {
                     }while(nbPages <= 0);
                     
                     System.out.println("Genre : ");
-                    scanner.nextLine();
                     String genre = scanner.nextLine();
                     
                     int nbExemplaires = 0;
@@ -88,6 +96,8 @@ public class Test {
                     }while(nbExemplaires <= 0);
                     
                     livres.add(new Livre(isbn, titre, auteur, nbPages, genre, nbExemplaires));
+                    textLog = getCurrentDateAndTime() + " - LIVRE AJOUTÉ: " + isbn + ", " + titre + ", " +  auteur + ", " +  nbPages + ", " +  genre + ", " + nbExemplaires;
+                    FileManager.writLog(fileName, textLog);
                     break;
 
                 case 3:
@@ -135,7 +145,8 @@ public class Test {
                     Livre livre = new Livre(idLivre);
                     
                     prets.add(new Pret(id, dateEmprunt, dureeEmprunt, dateRetourEffective, usager, livre));
-                    System.out.println("---> : " + prets.size());
+                    textLog = getCurrentDateAndTime() + " - PRÊT AJOUTÉ: " + id + ", " + dateEmprunt + ", "  + dureeEmprunt + ", " +  dateRetourEffective + ", " +  usager.getId() + ", " +  livre.getId();
+                    FileManager.writLog(fileName, textLog);
                     break;
 
                 case 4:
@@ -147,5 +158,9 @@ public class Test {
             }
         }
         scanner.close();
+    }
+    
+    private static String getCurrentDateAndTime() {
+    	return LocalDate.now()+"_"+LocalTime.now().format(DateTimeFormatter.ofPattern("HH-mm-ss"));
     }
 }
