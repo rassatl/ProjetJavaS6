@@ -145,7 +145,7 @@ public class Test {
                     Livre livre = new Livre(idLivre);
                     
                     prets.add(new Pret(id, dateEmprunt, dureeEmprunt, dateRetourEffective, usager, livre));
-                    textLog = getCurrentDateAndTime() + " - PRÊT AJOUTÉ: " + id + ", " + dateEmprunt + ", "  + dureeEmprunt + ", " +  dateRetourEffective + ", " +  usager.getId() + ", " +  livre.getId();
+                    textLog = getCurrentDateAndTime() + " - PRÊT AJOUTÉ: " + id + ", " + dateEmprunt + ", "  + dureeEmprunt + ", " +  dateRetourEffective + ", " +  usager.getId() + ", " +  livre.getIsbn();
                     FileManager.writLog(fileName, textLog);
                     break;
 
